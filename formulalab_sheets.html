@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ФормулаLab — Қысқаша көбейту формулалары</title>
+<meta name="description" content="7-сыныпқа арналған қысқаша көбейту формулаларын ойнап, есептеп үйренетін сайт.">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f6ff;--grid:#dce5ff;--card:#fff;--ink:#14213d;--mut:#4b587a;--edge:#14213d;--ind:#3a47d5;--btn:#3a47d5;--cor:#e23d4b;--sun:#ffc83d;--mnt:#0f9d8a;--soft:#e8edff;--ok:#0b7a52;--bad:#c42b3a;--hd:rgba(242,246,255,.94);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1430;--grid:#19224f;--card:#172048;--ink:#eef1ff;--mut:#aab6df;--edge:#05081a;--ind:#9aa6ff;--btn:#5562f5;--cor:#ff7a85;--mnt:#36d1bc;--soft:#222c5e;--ok:#4fd6a0;--bad:#ff8a95;--hd:rgba(14,20,48,.94);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1430;--grid:#19224f;--card:#172048;--ink:#eef1ff;--mut:#aab6df;--edge:#05081a;--ind:#9aa6ff;--btn:#5562f5;--cor:#ff7a85;--mnt:#36d1bc;--soft:#222c5e;--ok:#4fd6a0;--bad:#ff8a95;--hd:rgba(14,20,48,.94);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(84px + env(safe-area-inset-top,0px))}
+body{margin:0;font-family:"Nunito","Segoe UI",Roboto,Arial,sans-serif;font-weight:500;line-height:1.6;color:var(--ink);background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:30}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:6px}
+.wrap{width:min(1080px,100% - 32px);margin-inline:auto}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hd);border-bottom:2px solid var(--edge);backdrop-filter:blur(8px)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:12px;position:relative}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.2rem;text-decoration:none}
+.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:var(--sun);color:#14213d;border:2px solid var(--edge);box-shadow:3px 3px 0 var(--edge);font-weight:900}
+.burger{border:2px solid var(--edge);background:var(--card);border-radius:10px;padding:7px 12px;font-weight:800}
+#links{display:none;position:absolute;top:100%;right:0;left:0;flex-direction:column;background:var(--card);border:2px solid var(--edge);border-radius:0 0 14px 14px;padding:8px;margin:0;list-style:none}
+#links.open{display:flex}
+#links a{display:block;padding:10px 12px;border-radius:10px;font-weight:800;text-decoration:none;color:var(--mut)}
+#links a:hover,#links a.on{background:var(--soft);color:var(--ink)}
+section{padding:48px 0}
+.sh{margin-bottom:22px}
+.sh h2{margin:0 0 6px;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.15;font-weight:900}
+.sh p{margin:0;color:var(--mut);max-width:62ch}
+.card{background:var(--card);border:2px solid var(--edge);border-radius:16px;box-shadow:5px 5px 0 var(--edge);padding:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid var(--edge);border-radius:12px;padding:11px 18px;font-weight:900;background:var(--card);box-shadow:3px 3px 0 var(--edge);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--edge)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--edge)}
+.btn.pri{background:var(--btn);color:#fff}
+.btn.sun{background:var(--sun);color:#14213d}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.hero{position:relative;overflow:hidden;padding:44px 0 56px}
+.hg{display:grid;gap:30px;position:relative}
+.hero h1{margin:0 0 14px;font-size:clamp(2.3rem,7vw,4.2rem);line-height:1.05;font-weight:900;letter-spacing:-.02em}
+.hero h1 small{display:block;margin-top:10px;font-size:clamp(1.1rem,3vw,1.5rem);color:var(--ind);letter-spacing:0}
+.lead{color:var(--mut);font-size:1.08rem;max-width:56ch}
+.goal{margin:16px 0;padding:12px 14px;border-left:6px solid var(--mnt);background:var(--card);border-radius:0 12px 12px 0;font-weight:700}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.shape{position:absolute;font-weight:900;opacity:.4;pointer-events:none;animation:fl 8s ease-in-out infinite}
+.s1{top:6%;right:6%;font-size:3rem;color:var(--cor)}.s2{bottom:8%;left:3%;font-size:2.4rem;color:var(--mnt);animation-delay:-3s}.s3{top:44%;right:46%;font-size:2rem;color:var(--ind);animation-delay:-5s}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(12deg)}}
+.model{width:min(100%,300px);aspect-ratio:1;margin:0 auto 14px;display:grid;gap:3px;border:2px solid var(--edge);border-radius:12px;padding:3px;background:var(--edge);transition:grid-template-columns .35s,grid-template-rows .35s}
+.model div{display:grid;place-items:center;overflow:hidden;font-weight:900;border-radius:6px;color:#14213d}
+.m1{background:#9aa6ff}.m2{background:var(--sun)}.m3{background:#5fe0cc}
+.sl{display:grid;grid-template-columns:auto 1fr auto;gap:8px 12px;align-items:center;font-weight:800}
+.sl input{width:100%;accent-color:var(--btn)}
+.eq{font-weight:800;background:var(--soft);padding:8px 12px;border-radius:10px;overflow-wrap:anywhere}
+.leg{display:flex;flex-wrap:wrap;gap:12px;font-size:.9rem;font-weight:700;margin:10px 0 0;padding:0;list-style:none}
+.leg i{display:inline-block;width:14px;height:14px;border-radius:4px;border:2px solid var(--edge);vertical-align:-2px;margin-right:5px}
+.bar{height:14px;border:2px solid var(--edge);border-radius:99px;background:var(--soft);overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mnt),var(--sun));transition:width .5s}
+#ach{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}
+#ach li{display:flex;gap:10px;align-items:center;padding:8px 12px;border:2px dashed var(--mut);border-radius:12px;color:var(--mut);font-weight:700}
+#ach li.done{border:2px solid var(--ok);color:var(--ink);background:var(--soft)}
+#ach li b{font-size:1.2rem;filter:grayscale(1)}#ach li.done b{filter:none}
+.tg{display:grid;gap:18px}
+.fm{font-size:1.25rem;font-weight:900;color:var(--ind);margin:.4rem 0;overflow-wrap:anywhere}
+.tag{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:99px;background:var(--sun);color:#14213d;font-size:.75rem;vertical-align:middle}
+.warn{background:var(--soft);border-left:5px solid var(--cor);padding:8px 12px;border-radius:0 10px 10px 0;font-weight:700}
+details{margin-top:12px;border:2px solid var(--edge);border-radius:12px;background:var(--bg)}
+summary{cursor:pointer;padding:10px 14px;font-weight:900;list-style:none}
+summary::before{content:"＋ "}details[open] summary::before{content:"− "}
+details>div{padding:0 14px 12px}
+.eqn{background:var(--soft);padding:8px 12px;border-radius:10px;font-weight:700;overflow-wrap:anywhere}
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tabs button{border:2px solid var(--edge);background:var(--card);border-radius:12px;padding:9px 16px;font-weight:900}
+.tabs button[aria-selected=true]{background:var(--btn);color:#fff}
+.stat{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:12px;font-weight:800}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.cols h3{margin:0 0 8px;font-size:1rem}
+.cols>div{display:grid;gap:8px;align-content:start}
+.opt{border:2px solid var(--edge);background:var(--card);border-radius:12px;padding:10px 12px;text-align:left;font-weight:800;overflow-wrap:anywhere;transition:transform .15s,background .15s}
+.opt:hover:not([disabled]){transform:translateY(-2px)}
+.opt.sel{background:var(--sun);color:#14213d}
+.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{background:var(--bad);border-color:var(--bad);color:#fff;animation:sh .35s}
+@keyframes sh{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.opt[disabled]{cursor:default}
+.msg{min-height:1.6em;font-weight:800;margin:10px 0}
+.q{font-size:1.25rem;font-weight:900;margin:12px 0}
+.qo{display:grid;gap:10px;margin-bottom:10px}
+.hidden{display:none!important}
+.cg{display:grid;gap:18px}
+.fld{display:grid;gap:6px;margin-bottom:14px;font-weight:800}
+input[type=text],input[type=number],select,textarea{width:100%;padding:11px 12px;border:2px solid var(--edge);border-radius:10px;background:var(--bg)}
+.res{font-size:2.2rem;font-weight:900;color:var(--ind);overflow-wrap:anywhere}
+ol.st{padding-left:22px;display:grid;gap:10px}
+.err{color:var(--bad);font-weight:800;min-height:1.4em;margin:0}
+fieldset{border:0;padding:0;margin:0 0 14px}
+legend{font-weight:800;padding:0;margin-bottom:6px}
+.stars{display:flex;gap:6px}
+.stars input{position:absolute;opacity:0}
+.stars label{font-size:2rem;cursor:pointer;color:var(--mut);line-height:1;transition:transform .15s}
+.stars label.on{color:#f0a500}
+.stars label:hover{transform:scale(1.2)}
+.stars input:focus-visible+label{outline:3px solid var(--sun);border-radius:6px}
+footer{margin-top:30px;border-top:2px solid var(--edge);background:var(--card);padding:26px 0 30px}
+.ft{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
+.ft nav{display:flex;flex-wrap:wrap;gap:6px 16px;font-weight:800}
+@media(min-width:760px){.burger{display:none}#links{display:flex;position:static;flex-direction:row;border:0;background:none;padding:0}.hg{grid-template-columns:1.1fr .9fr;align-items:center}.tg{grid-template-columns:1fr 1fr}.tg .card:first-child{grid-column:1/-1}.cg{grid-template-columns:1fr 1fr}.qo{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:no-preference){.js .rv{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}.js .rv.in{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#top"><span class="logo">x²</span>ФормулаLab</a>
+<button class="burger" id="burger" aria-expanded="false" aria-controls="links">☰ Мәзір</button>
+<ul id="links">
+<li><a href="#top">Басты бет</a></li><li><a href="#theory">Теория</a></li><li><a href="#games">Ойын</a></li><li><a href="#calc">Калькулятор</a></li><li><a href="#feedback">Пікір</a></li>
+</ul></div></header>
+<main>
+<section class="hero" id="top"><div class="wrap hg">
+<span class="shape s1" aria-hidden="true">△</span><span class="shape s2" aria-hidden="true">＋</span><span class="shape s3" aria-hidden="true">²</span>
+<div>
+<h1>ФормулаLab<small>Қысқаша көбейту формулалары</small></h1>
+<p class="lead">Ұзақ жақша ашудан шаршадың ба? Дайын формулаларды үйреніп, есепті бірнеше секундта шығарып үйрен.</p>
+<p class="goal">Мақсат: үш негізгі формуланы ажыратып, 103² сияқты санды ауызша есептей білу.</p>
+<div class="cta"><a class="btn pri" href="#theory">📘 Теорияны бастау</a><a class="btn sun" href="#games">🎮 Ойын ойнау</a><a class="btn" href="#calc">🧮 Калькулятор</a></div>
+</div>
+<div class="card">
+<h2 style="margin:0 0 6px;font-size:1.2rem">(a+b)² квадратын көр</h2>
+<div class="model" id="model" role="img" aria-label="a және b қабырғалы квадраттың бөліктері"><div class="m1" id="c1"></div><div class="m2" id="c2"></div><div class="m2" id="c3"></div><div class="m3" id="c4"></div></div>
+<div class="sl"><label for="ra">a</label><input type="range" id="ra" min="1" max="8" value="5"><b id="ta">5</b><label for="rb">b</label><input type="range" id="rb" min="1" max="8" value="3"><b id="tb">3</b></div>
+<p class="eq" id="meq" aria-live="polite"></p>
+<ul class="leg"><li><i style="background:#9aa6ff"></i>a²</li><li><i style="background:var(--sun)"></i>ab (екі рет)</li><li><i style="background:#5fe0cc"></i>b²</li></ul>
+<h3 style="margin:18px 0 6px">Жетістіктерің: <span id="pc">0 / 4</span></h3>
+<div class="bar" role="progressbar" aria-label="Жалпы прогресс" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" id="pb"><span id="pf"></span></div>
+<ul id="ach"></ul>
+</div></div></section>
+
+<section id="theory" class="rv"><div class="wrap">
+<div class="sh"><h2>Теория</h2><p>Көпмүшені мүшелеп көбейтудің орнына дайын үлгіні қолданамыз. Әр карточкадағы мысалды ашып қара.</p></div>
+<div class="tg" id="tg"></div>
+</div></section>
+
+<section id="games" class="rv"><div class="wrap">
+<div class="sh"><h2>Ойын алаңы</h2><p>Білгеніңді тексер: жұптарды тап немесе жылдам тестке жауап бер.</p></div>
+<div class="card">
+<div class="tabs" role="tablist"><button role="tab" id="t1" aria-selected="true" aria-controls="p1">🧩 Сәйкестендіру</button><button role="tab" id="t2" aria-selected="false" aria-controls="p2">🚀 Жылдам тест</button></div>
+<div id="p1" role="tabpanel" aria-labelledby="t1">
+<p>Формуланы дұрыс жауабымен жұптастыр: алдымен сол жақтан, сосын оң жақтан таңда.</p>
+<div class="stat"><span>Табылған жұп: <b id="mo">0</b> / 5</span><span>Қате: <b id="me">0</b></span><button class="btn btn-s" id="mr">↻ Қайта ойнау</button></div>
+<div class="bar"><span id="mf"></span></div>
+<div class="cols"><div><h3>Формула</h3><div id="mL" style="display:grid;gap:8px"></div></div><div><h3>Жауабы</h3><div id="mR" style="display:grid;gap:8px"></div></div></div>
+<p class="msg" id="mm" aria-live="polite">Бір формуланы таңда.</p>
+</div>
+<div id="p2" role="tabpanel" aria-labelledby="t2" class="hidden">
+<div class="stat"><span id="qc">1 / 8 сұрақ</span><span>Ұпай: <b id="qs">0</b></span></div>
+<div class="bar"><span id="qf"></span></div>
+<div id="qb"><p class="q" id="qq"></p><div class="qo" id="qo"></div><p class="msg" id="qm" aria-live="polite"></p><button class="btn pri" id="qn" disabled>Келесі сұрақ</button></div>
+<div id="qe" class="hidden"><h3 id="qh" style="font-size:1.5rem;margin:6px 0"></h3><p id="qt"></p><button class="btn sun" id="qr">↻ Қайта ойнау</button></div>
+</div>
+</div></div></section>
+
+<section id="calc" class="rv"><div class="wrap">
+<div class="sh"><h2>Калькулятор</h2><p>Формуланы таңда, a мен b мәнін жаз — қадамдарды көресің. Калькулятор тек осы бес формуламен жұмыс істейді.</p></div>
+<div class="cg">
+<div class="card">
+<div class="fld"><label for="fs">Формуланы таңда</label><select id="fs"></select></div>
+<div class="fld"><label for="va">a мәні</label><input type="number" id="va" step="any" value="5" inputmode="decimal"></div>
+<div class="fld"><label for="vb">b мәні</label><input type="number" id="vb" step="any" value="3" inputmode="decimal"></div>
+<p class="err" id="ce" role="alert"></p>
+<div class="cta" style="margin-top:6px"><button class="btn pri" id="cb">Есептеу</button><button class="btn" id="cr">🎲 Кездейсоқ мән</button></div>
+</div>
+<div class="card"><h3 style="margin:0">Нәтиже</h3><div class="res" id="cres">—</div><h3>Шешу жолы</h3><div id="cst"><p>Формуланы таңдап, «Есептеу» батырмасын бас.</p></div></div>
+</div></div></section>
+
+<section id="feedback" class="rv"><div class="wrap">
+<div class="sh"><h2>Пікір қалдыр</h2><p>Сайт саған көмектесті ме? Не ұнады, нені жақсартуға болады — жаз.</p></div>
+<div class="card" style="max-width:640px">
+<form id="ff" novalidate>
+<div class="fld"><label for="fn">Оқушының аты-жөні *</label><input type="text" id="fn" maxlength="100" autocomplete="name" placeholder="Мысалы, Айдана Ермекова"><p class="err" id="e0"></p></div>
+<div class="fld"><label for="fk">Сыныбы *</label><input type="text" id="fk" maxlength="20" placeholder="Мысалы, 7 «А»"><p class="err" id="e3"></p></div>
+<fieldset><legend>Бағаң (1–5 жұлдыз) *</legend><div class="stars" id="st"></div><p class="err" id="e1"></p></fieldset>
+<div class="fld"><label for="fc">Пікірің *</label><textarea id="fc" rows="4" maxlength="500" placeholder="Маған ұнағаны... / Ұсынысым..."></textarea><p class="err" id="e2"></p></div>
+<button class="btn pri" type="submit" id="fb">Пікірді жіберу</button>
+<p class="msg" id="fst" role="status" aria-live="polite"></p>
+</form>
+<div id="fok" class="hidden" role="status"><h3 style="font-size:1.5rem;margin:0 0 6px">Рақмет! 🎉</h3><p id="fm2"></p><p style="color:var(--mut)">Сұраныс Google Sheets кестесіне жіберілді: мұғалім жаңа жолды кестеден көреді.</p><button class="btn sun" id="fa">Жаңа пікір жазу</button></div>
+</div></div></section>
+</main>
+<footer><div class="wrap ft"><div><b>ФормулаLab — Қысқаша көбейту формулалары</b><br><span style="color:var(--mut)">7-сынып алгебрасы. Қателесу — үйренудің бір бөлігі!</span></div>
+<nav aria-label="Төменгі мәзір"><a href="#theory">Теория</a><a href="#games">Ойын</a><a href="#calc">Калькулятор</a><a href="#feedback">Пікір</a></nav>
+<button class="btn" id="up">↑ Жоғарыға</button></div></footer>
+
+<script>
+document.documentElement.classList.add('js');
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const fmt=n=>String(+n.toFixed(6)).replace('-','−'),p=n=>n<0?`(${fmt(n)})`:fmt(n);
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const strip=s=>s.replace(/·/g,'');
+/* nav */
+$('#burger').onclick=()=>{const o=$('#links').classList.toggle('open');$('#burger').setAttribute('aria-expanded',o)};
+$$('#links a').forEach(a=>a.onclick=()=>{$('#links').classList.remove('open');$('#burger').setAttribute('aria-expanded',false)});
+$('#up').onclick=()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');$$('#links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+e.target.id))}}),{rootMargin:'-35% 0px -55% 0px'});
+$$('section').forEach(s=>io.observe(s));
+const io2=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.05});
+$$('.rv').forEach(s=>io2.observe(s));
+/* achievements */
+const AC=[['th','📘','Теория: бес мысалды да аштың'],['mt','🧩','Сәйкестендіру: барлық жұпты таптың'],['qz','🚀','Тест: кемінде 6 ұпай жинадың'],['ca','🧮','Калькулятор: алғашқы есепті шығардың']],done={};
+function ach(){$('#ach').innerHTML=AC.map(a=>`<li class="${done[a[0]]?'done':''}"><b>${a[1]}</b>${a[2]}</li>`).join('');const n=Object.keys(done).length;$('#pc').textContent=n+' / 4';$('#pf').style.width=n*25+'%';$('#pb').setAttribute('aria-valuenow',n)}
+const mark=k=>{done[k]=1;ach()};ach();
+/* hero model */
+function model(){const a=+$('#ra').value,b=+$('#rb').value;$('#ta').textContent=a;$('#tb').textContent=b;const m=$('#model');m.style.gridTemplateColumns=`${a}fr ${b}fr`;m.style.gridTemplateRows=`${a}fr ${b}fr`;$('#c1').textContent=a*a;$('#c2').textContent=a*b;$('#c3').textContent=a*b;$('#c4').textContent=b*b;$('#meq').textContent=`(${a}+${b})² = ${a*a} + ${2*a*b} + ${b*b} = ${(a+b)**2}`}
+$('#ra').oninput=$('#rb').oninput=model;model();
+/* theory */
+const F=[
+['Қосындының квадраты',0,'(a+b)² = a² + 2ab + b²','Қосындының квадраты = бірінші санның квадраты + екі еселенген көбейтінді + екінші санның квадраты.','Жиі қателік: (a+b)² ≠ a² + b². 2ab мүшесін ұмытпа!','<p>Жақшаны ашамыз: (a+b)(a+b) = a·a + a·b + b·a + b·b = a² + 2ab + b².</p><p><b>Мысал.</b> 103² есептейік. 103 = 100 + 3, сондықтан</p><p class="eqn">(100+3)² = 100² + 2·100·3 + 3² = 10000 + 600 + 9 = <b>10609</b></p>'],
+['Айырманың квадраты',0,'(a−b)² = a² − 2ab + b²','Айырманың квадраты = бірінші санның квадраты − екі еселенген көбейтінді + екінші санның квадраты.','Ортадағы таңба «−», ал соңғы b² әрқашан «+» болады.','<p>(a−b)(a−b) = a² − ab − ba + b² = a² − 2ab + b².</p><p><b>Мысал.</b> 98² есептейік. 98 = 100 − 2, сондықтан</p><p class="eqn">(100−2)² = 100² − 2·100·2 + 2² = 10000 − 400 + 4 = <b>9604</b></p>'],
+['Квадраттар айырмасы',0,'a² − b² = (a−b)(a+b)','Екі санның квадраттарының айырмасы = олардың айырмасы мен қосындысының көбейтіндісі.','Абай бол: a² − b² ≠ (a−b)². Оң жағында екі түрлі жақша тұр.','<p>(a−b)(a+b) = a² + ab − ab − b². Ортадағы мүшелер бір-бірін жояды, a² − b² қалады.</p><p><b>Мысал.</b> 51·49 есептейік. 51 = 50 + 1, 49 = 50 − 1, сондықтан</p><p class="eqn">51·49 = 50² − 1² = 2500 − 1 = <b>2499</b></p>'],
+['Қосындының кубы',1,'(a+b)³ = a³ + 3a²b + 3ab² + b³','Төрт мүше шығады, бәрінің таңбасы «+». Коэффициенттер: 1, 3, 3, 1.','','<p>(a+b)³ = (a+b)·(a+b)², яғни (a+b)(a²+2ab+b²). Жақшаны ашып, ұқсас мүшелерді қосамыз.</p><p><b>Мысал.</b> (x+2)³ жазайық. Мұнда a = x, b = 2:</p><p class="eqn">x³ + 3·x²·2 + 3·x·2² + 2³ = <b>x³ + 6x² + 12x + 8</b></p>'],
+['Айырманың кубы',1,'(a−b)³ = a³ − 3a²b + 3ab² − b³','Таңбалар кезектеседі: +, −, +, −. Коэффициенттер сол 1, 3, 3, 1.','','<p>Қосынды кубының формуласында b орнына −b қойсақ, таңбалар кезектесіп өзгереді.</p><p><b>Мысал.</b> (x−1)³ жазайық. Мұнда a = x, b = 1:</p><p class="eqn">x³ − 3·x²·1 + 3·x·1² − 1³ = <b>x³ − 3x² + 3x − 1</b></p>']];
+const op=new Set();
+$('#tg').innerHTML=F.map((f,i)=>`<article class="card"><h3 style="margin:0;font-size:1.3rem">${f[0]}${f[1]?'<span class="tag">Қосымша</span>':''}</h3><p class="fm">${f[2]}</p><p>${f[3]}</p>${f[4]?`<p class="warn">${f[4]}</p>`:''}<details data-i="${i}"><summary>Мысал мен түсіндірме</summary><div>${f[5]}</div></details></article>`).join('');
+$$('details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open){op.add(d.dataset.i);if(op.size==5)mark('th')}}));
+/* formulas */
+const C=[
+{L:'(a+b)²',R:'a²+2·a·b+b²',l:(a,b)=>(a+b)**2,t:[(a,b)=>a*a,(a,b)=>2*a*b,(a,b)=>b*b],j:' + '},
+{L:'(a−b)²',R:'a²−2·a·b+b²',l:(a,b)=>(a-b)**2,t:[(a,b)=>a*a,(a,b)=>-2*a*b,(a,b)=>b*b],j:' + '},
+{L:'a²−b²',R:'(a−b)·(a+b)',l:(a,b)=>a*a-b*b,t:[(a,b)=>a-b,(a,b)=>a+b],j:' · '},
+{L:'(a+b)³',R:'a³+3·a²·b+3·a·b²+b³',l:(a,b)=>(a+b)**3,t:[(a,b)=>a**3,(a,b)=>3*a*a*b,(a,b)=>3*a*b*b,(a,b)=>b**3],j:' + '},
+{L:'(a−b)³',R:'a³−3·a²·b+3·a·b²−b³',l:(a,b)=>(a-b)**3,t:[(a,b)=>a**3,(a,b)=>-3*a*a*b,(a,b)=>3*a*b*b,(a,b)=>-(b**3)],j:' + '}];
+/* tabs */
+function tab(n){[1,2].forEach(i=>{$('#t'+i).setAttribute('aria-selected',i==n);$('#p'+i).classList.toggle('hidden',i!=n)})}
+$('#t1').onclick=()=>tab(1);$('#t2').onclick=()=>tab(2);
+/* matching */
+let mo,me,sl,sr,lock;
+function mInit(){mo=me=0;sl=sr=null;lock=false;$('#mL').innerHTML=C.map((c,i)=>`<button class="opt" data-i="${i}">${c.L}</button>`).join('');$('#mR').innerHTML=shuf(C.map((c,i)=>i)).map(i=>`<button class="opt" data-i="${i}">${strip(C[i].R)}</button>`).join('');mUp('Бір формуланы таңда.')}
+function mUp(t){$('#mo').textContent=mo;$('#me').textContent=me;$('#mf').style.width=mo*20+'%';$('#mm').textContent=t}
+function mPick(side,e){const b=e.target.closest('.opt');if(!b||lock||b.disabled)return;$$('#'+(side?'mL':'mR')+' .opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');if(side)sl=b;else sr=b;if(!(sl&&sr)){mUp(side?'Енді оң жақтан жауабын таңда.':'Енді сол жақтан формуланы таңда.');return}
+lock=true;if(sl.dataset.i==sr.dataset.i){[sl,sr].forEach(x=>{x.className='opt ok';x.disabled=true});mo++;sl=sr=null;lock=false;mUp(mo==5?`Керемет! Бес жұпты да таптың. Қате саны: ${me}.`:'Дұрыс! 🎉 Келесі жұпты тап.');if(mo==5)mark('mt')}
+else{me++;[sl,sr].forEach(x=>x.className='opt no');mUp('Қате, тағы байқап көр.');setTimeout(()=>{[sl,sr].forEach(x=>x.className='opt');sl=sr=null;lock=false},650)}}
+$('#mL').onclick=e=>mPick(1,e);$('#mR').onclick=e=>mPick(0,e);$('#mr').onclick=mInit;mInit();
+/* quiz */
+const Q=[
+['(x+3)² өрнегін жай түрде жаз.','x²+6x+9',['x²+9','x²+3x+9','x²+6x+6'],'(x+3)² = x² + 2·x·3 + 3² = x² + 6x + 9.'],
+['(y−5)² = ?','y²−10y+25',['y²−25','y²−5y+25','y²+10y+25'],'(y−5)² = y² − 2·y·5 + 5² = y² − 10y + 25.'],
+['x²−16 өрнегін көбейткіштерге жікте.','(x−4)(x+4)',['(x−4)²','(x−8)(x+8)','(x+4)²'],'16 = 4², сондықтан x² − 4² = (x−4)(x+4).'],
+['101² санын формуламен есепте.','10201',['10101','10021','10200'],'(100+1)² = 10000 + 200 + 1 = 10201.'],
+['99² санын формуламен есепте.','9801',['9899','9701','9601'],'(100−1)² = 10000 − 200 + 1 = 9801.'],
+['(2a+1)² = ?','4a²+4a+1',['2a²+4a+1','4a²+1','4a²+2a+1'],'(2a)² + 2·2a·1 + 1² = 4a² + 4a + 1.'],
+['52·48 көбейтіндісін есепте.','2496',['2500','2506','2486'],'(50+2)(50−2) = 50² − 2² = 2500 − 4 = 2496.'],
+['(x+1)³ = ?','x³+3x²+3x+1',['x³+1','x³+3x+1','x³+x²+x+1'],'(x+1)³ = x³ + 3x² + 3x + 1.']];
+let qi,qs;
+function qShow(){const q=Q[qi];$('#qc').textContent=`${qi+1} / 8 сұрақ`;$('#qs').textContent=qs;$('#qf').style.width=qi*12.5+'%';$('#qq').textContent=q[0];$('#qm').textContent='';$('#qn').disabled=true;$('#qn').textContent=qi==7?'Нәтижені көру':'Келесі сұрақ';$('#qo').innerHTML=shuf([q[1],...q[2]]).map(o=>`<button class="opt">${o}</button>`).join('')}
+function qInit(){qi=qs=0;$('#qb').classList.remove('hidden');$('#qe').classList.add('hidden');qShow()}
+$('#qo').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;const q=Q[qi],ok=b.textContent==q[1];$$('#qo .opt').forEach(x=>{x.disabled=true;if(x.textContent==q[1])x.classList.add('ok')});if(ok)qs++;else b.classList.add('no');$('#qs').textContent=qs;$('#qm').textContent=(ok?'Дұрыс! ✅ ':'Қате ❌ Дұрыс жауап: '+q[1]+'. ')+q[3];$('#qn').disabled=false}
+$('#qn').onclick=()=>{if(qi<7){qi++;qShow()}else{$('#qf').style.width='100%';$('#qb').classList.add('hidden');$('#qe').classList.remove('hidden');$('#qh').textContent=`Нәтиже: ${qs} / 8`;$('#qt').textContent=qs>=7?'Тамаша! Сен формулаларды жақсы меңгердің. 🏆':qs>=5?'Жақсы! Теориядағы мысалдарды қайта қарап, тағы бір рет ойна.':'Ештеңе етпейді! Теорияны қайта оқып, қайта ойнап көр. 💪';if(qs>=6)mark('qz')}};
+$('#qr').onclick=qInit;qInit();
+/* calculator */
+$('#fs').innerHTML=C.map((c,i)=>`<option value="${i}">${c.L} = ${strip(c.R)}</option>`).join('');
+const sub=(t,a,b)=>t.replace(/[ab]/g,m=>p(m=='a'?a:b));
+function calc(){const a=parseFloat($('#va').value),b=parseFloat($('#vb').value),c=C[+$('#fs').value],e=$('#ce');
+if(!isFinite(a)||!isFinite(b)){e.textContent='a және b үшін сан енгіз (мысалы, 5 немесе 2.5).';return}
+if(Math.abs(a)>1000||Math.abs(b)>1000){e.textContent='Санды 1000-нан аспайтындай етіп енгіз.';return}
+e.textContent='';const tv=c.t.map(f=>f(a,b)),rh=c.j==' · '?tv.reduce((x,y)=>x*y):tv.reduce((x,y)=>x+y),lh=c.l(a,b),eq=Math.abs(lh-rh)<1e-6;
+$('#cres').textContent=fmt(lh);
+$('#cst').innerHTML=`<ol class="st"><li>Формула: <b>${c.L} = ${strip(c.R)}</b></li><li>a = ${fmt(a)}, b = ${fmt(b)} қоямыз:<br>${strip(sub(c.L,a,b))} = ${strip(sub(c.R,a,b))}</li><li>Сол жағы: ${strip(sub(c.L,a,b))} = <b>${fmt(lh)}</b></li><li>Оң жағы: ${strip(sub(c.R,a,b))} = ${tv.map(p).join(c.j)} = <b>${fmt(rh)}</b></li><li>Тексеру: ${eq?`екі жағы да ${fmt(lh)} — формула дұрыс орындалды ✅`:'екі жақ сәйкес келмеді ❌'}</li></ol>`;mark('ca')}
+$('#cb').onclick=calc;$('#fs').onchange=calc;
+$('#cr').onclick=()=>{$('#va').value=(Math.random()*18-6|0);$('#vb').value=(Math.random()*12-4|0);calc()};
+[$('#va'),$('#vb')].forEach(i=>i.addEventListener('keydown',e=>e.key=='Enter'&&calc()));
+/* feedback */
+let rate=0;
+$('#st').innerHTML=[1,2,3,4,5].map(i=>`<input type="radio" name="r" id="r${i}" value="${i}"><label for="r${i}" title="${i} жұлдыз" aria-label="${i} жұлдыз">★</label>`).join('');
+$('#st').onchange=e=>{rate=+e.target.value;$$('#st label').forEach((l,i)=>l.classList.toggle('on',i<rate));$('#e1').textContent=''};
+const SHEETS_URL="https://script.google.com/macros/s/AKfycbwQN342xnEjvEzm5iA5TwBNkEOSN3todyt7SLvEjFkjHX39PuZ4PvMoqoIEsEn5fhmK/exec";
+let sending=false;
+function fdone(){sending=false;$('#fb').disabled=false;$('#fb').textContent='Пікірді жіберу'}
+function ffail(m){fdone();$('#fst').style.color='var(--bad)';$('#fst').textContent=m}
+$('#ff').onsubmit=async e=>{e.preventDefault();if(sending)return;const n=$('#fn').value.trim(),k=$('#fk').value.trim(),c=$('#fc').value.trim();let bad=0;
+$('#e0').textContent=n.length>=3?'':(bad=1,'Аты-жөніңді толық жаз.');
+$('#e3').textContent=k?'':(bad=1,'Сыныбыңды жаз, мысалы, 7 «А».');
+$('#e1').textContent=rate?'':(bad=1,'Жұлдыз санын таңда.');
+$('#e2').textContent=c.length>=10?'':(bad=1,'Пікір кемінде 10 таңбадан тұруы керек.');
+$('#fst').textContent='';if(bad)return;
+if(!navigator.onLine){ffail('Интернет байланысы жоқ. Желіге қосылып, қайта көр: жазғаның сақталып тұр.');return}
+sending=true;$('#fb').disabled=true;$('#fb').textContent='Жіберілуде…';$('#fst').style.color='var(--mut)';$('#fst').textContent='Деректер Google Sheets кестесіне жіберілуде…';
+const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),15000);
+try{await fetch(SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({studentName:n,studentClass:k,rating:rate,comment:c,timestamp:new Date().toISOString(),page:'ФормулаLab'}),signal:ctl.signal});
+fdone();$('#fst').textContent='';$('#fm2').textContent=`Рақмет, ${n} (${k})! Бағаң: ${'★'.repeat(rate)} (${rate}/5).`;$('#ff').classList.add('hidden');$('#fok').classList.remove('hidden')}
+catch(err){ffail(err.name=='AbortError'?'Жауап 15 секундта келмеді. Қайта көр: жазғаның сақталып тұр.':'Жіберу кезінде қате шықты. Интернетті тексеріп, қайта көр: жазғаның сақталып тұр.')}
+finally{clearTimeout(tm)}};
+$('#fa').onclick=()=>{$('#ff').reset();$$('#ff .err').forEach(x=>x.textContent='');rate=0;$$('#st label').forEach(l=>l.classList.remove('on'));$('#fok').classList.add('hidden');$('#ff').classList.remove('hidden')};
+</script>
+</body>
+</html>
