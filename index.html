@@ -288,8 +288,27 @@ $('#fst').textContent='';if(bad)return;
 if(!navigator.onLine){ffail('Интернет байланысы жоқ. Желіге қосылып, қайта көр: жазғаның сақталып тұр.');return}
 sending=true;$('#fb').disabled=true;$('#fb').textContent='Жіберілуде…';$('#fst').style.color='var(--mut)';$('#fst').textContent='Деректер Google Sheets кестесіне жіберілуде…';
 const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),15000);
-try{await fetch(SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({studentName:n,studentClass:k,rating:rate,comment:c,timestamp:new Date().toISOString(),page:'ФормулаLab'}),signal:ctl.signal});
-fdone();$('#fst').textContent='';$('#fm2').textContent=`Рақмет, ${n} (${k})! Бағаң: ${'★'.repeat(rate)} (${rate}/5).`;$('#ff').classList.add('hidden');$('#fok').classList.remove('hidden')}
+try{
+    const payload = {
+        studentName: n,
+        studentClass: k,
+        rating: rate,
+        comment: c,
+        timestamp: new Date().toISOString(),
+        page: 'ФормулаLab'
+    };
+    const formBody = Object.keys(payload)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(payload[key]))
+        .join('&');
+
+    await fetch(SHEETS_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+        body:formBody,
+        signal:ctl.signal
+    });
+    fdone();$('#fst').textContent='';$('#fm2').textContent=`Рақмет, ${n} (${k})! Бағаң: ${'★'.repeat(rate)} (${rate}/5).`;$('#ff').classList.add('hidden');$('#fok').classList.remove('hidden')
+}
 catch(err){ffail(err.name=='AbortError'?'Жауап 15 секундта келмеді. Қайта көр: жазғаның сақталып тұр.':'Жіберу кезінде қате шықты. Интернетті тексеріп, қайта көр: жазғаның сақталып тұр.')}
 finally{clearTimeout(tm)}};
 $('#fa').onclick=()=>{$('#ff').reset();$$('#ff .err').forEach(x=>x.textContent='');rate=0;$$('#st label').forEach(l=>l.classList.remove('on'));$('#fok').classList.add('hidden');$('#ff').classList.remove('hidden')};
